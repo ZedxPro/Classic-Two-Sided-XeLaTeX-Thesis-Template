@@ -1,0 +1,54 @@
+	\pagenumbering{alph}
+	% ==========================
+	% Title Page
+	% ==========================
+	\begin{titlepage}
+		\vspace*{-1.5cm}
+		\centering
+		{\footnotesize
+			\textbf{UNITED STATES OF AMERICA}\\[0.2cm]
+			\textbf{DEPARTMENT OF EDUCATION}\\[0.2cm]
+			\textbf{UNIVERSITY OF \LaTeX}\\[1cm]
+		
+		\includegraphics[width=0.80\textwidth]{gfx/LogoX.png}\\[1cm]
+    }
+		{\footnotesize
+			\textbf{SCHOOL OF ENGINEERING\\
+				DEPARTMENT OF COMPUTER SCIENCE}}\\[0.3cm]
+		
+		{\small\textbf{Master's Thesis}}\\
+		{\small\textbf{Field : Computer Science}}\\
+		{\small\textbf{Specialization : Artificial Intelligence}}\\[0.5cm]
+		
+		\vspace{0.5cm}
+		\begin{center}
+			\begin{tikzpicture}
+				\node[
+				inner sep=0.8cm,
+				text width=0.85\textwidth,
+				align=center,
+				anchor=center
+				] (title) at (0,0)
+				{\Large \textbf{Geodesics Shadows and Ringdown\\[0.3cm]
+						Signatures of Schwarzschild\\[0.3cm]
+						and Kerr Black Holes}};
+				\draw[line width=1pt] ([xshift=-0.3cm]title.north west) -- ([xshift=0.3cm]title.north east);
+				\draw[line width=1pt] ([xshift=-0.3cm]title.south west) -- ([xshift=0.3cm]title.south east);
+			\end{tikzpicture}
+		\end{center}
+		\vspace{0.5cm}
+		
+		{\small \textbf{Submitted by:}\\[0.1cm]
+			ZEDX Pro}\\[0.5cm]
+		{\small \textbf{Supervised by:}\\[0.1cm] Prof. FRANK Mittelbach}\\[0.5cm]
+		{\small \textbf{Thesis Committee:}\\[0.1cm]
+			Prof. LESLIE Lamport\\
+			Prof. DONALD Knuth}\\[1cm]
+		
+		{\small Academic Year 2025-2026}
+	\end{titlepage}
+	\newgeometry{
+		top=2.5cm, bottom=5.4cm,
+		left=2.5cm, right=2.5cm,
+		headsep=0.8cm, includehead
+	}

@@ -1,0 +1,100 @@
+% ==========================
+% Chapter 2
+% ==========================
+\cleardoublepage
+\ResetCounters{2}
+\CustomChapter{2}{Geodesic Structure of Rotating Spacetimes: The Kerr Metric}
+\ChapterQuote{Heat, like a fluid, tends to pass from a body which is hotter to one which is colder.}{Joseph Fourier}
+\phantomsection
+\addcontentsline{toc}{chapter}{Chapter 2: Geodesic Structure of Rotating Spacetimes: The Kerr Metric}
+\markboth{Geodesic Structure of Rotating Spacetimes: The Kerr Metric}{}
+\ChapterHeader
+
+\section{Introduction}
+\label{ch:chap2}
+Building on the geometric foundations and the Schwarzschild solution presented in Chapter~\ref{ch:chap1}, this chapter extends the discussion to rotating compact objects through the Kerr metric \cite{kerr1963}. We first derive the geodesic equations governing the motion of test particles and photons in a general spacetime, then present the Kerr solution in Boyer--Lindquist coordinates \cite{boyerlindquist1967}, and finally discuss its geodesic structure, including the photon sphere and the innermost stable circular orbit (ISCO) \cite{bardeen1972}.
+
+% ==========================
+\section{Geodesic Equations in General Relativity}
+% ==========================
+
+The trajectories of freely falling particles and light rays in a curved spacetime are described by the geodesic equation
+\begin{equation}
+	\frac{d^2 x^{\mu}}{d\tau^2} + \Gamma^{\mu}_{\alpha\beta}\frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau} = 0,
+	\label{eq:geodesic}
+\end{equation}
+where $\Gamma^{\mu}_{\alpha\beta}$ are the Christoffel symbols \marginpar{\footnotesize Massive particles follow timelike geodesics ($ds^2<0$), photons follow null geodesics ($ds^2=0$).} associated with the metric $g_{\mu\nu}$ introduced in Eq.~\eqref{eq:metric}, and $\tau$ is an affine parameter along the trajectory \cite{misner1973}. For massive particles $\tau$ is taken to be the proper time, while for photons an affine parameter is used since $ds^2=0$ along null geodesics.
+
+For a stationary, axisymmetric spacetime, Eq.~\eqref{eq:geodesic} admits conserved quantities associated with the Killing vectors $\partial_t$ and $\partial_\phi$, namely the specific energy $E$ and the specific angular momentum $L$ of the orbiting particle \cite{wald1984}. A third conserved quantity, the Carter constant $\mathcal{Q}$, arises from a hidden symmetry of the Kerr geometry and is essential for separating the equations of motion \cite{carter1968}.
+
+% ==========================
+\section{The Kerr Metric}
+% ==========================
+
+The Kerr solution describes the exterior spacetime of a stationary, axisymmetric, uncharged rotating mass \cite{kerr1963}. In Boyer--Lindquist coordinates $(t,r,\theta,\phi)$, it reads \cite{boyerlindquist1967}
+\begin{equation}
+	ds^2 = -\left(1-\frac{r_s r}{\Sigma}\right)c^2 dt^2 - \frac{2 r_s r a \sin^2\theta}{\Sigma}\,c\,dt\,d\phi + \frac{\Sigma}{\Delta}dr^2 + \Sigma\, d\theta^2 + \left(r^2+a^2+\frac{r_s r a^2\sin^2\theta}{\Sigma}\right)\sin^2\theta\, d\phi^2,
+	\label{eq:kerr}
+\end{equation}
+where $r_s=2GM/c^2$ is the Schwarzschild radius defined in Eq.~\eqref{eq:rs}, $a=J/(Mc)$ is the specific angular momentum of the central body, and
+\begin{equation}
+	\Sigma = r^2 + a^2\cos^2\theta, \qquad \Delta = r^2 - r_s r + a^2.
+	\label{eq:kerr-aux}
+\end{equation}
+Setting $a=0$ in Eq.~\eqref{eq:kerr} recovers the Schwarzschild metric of Eq.~\eqref{eq:schwarzschild}, confirming that the latter is a limiting case of the more general rotating solution \cite{chandrasekhar1983}.
+
+The event horizons of the Kerr metric are located at the roots of $\Delta=0$,
+\begin{equation}
+	r_{\pm} = \frac{r_s}{2} \pm \sqrt{\left(\frac{r_s}{2}\right)^2 - a^2},
+	\label{eq:kerr-horizons}
+\end{equation}
+which exist only for $a \leq r_s/2$, corresponding to a maximally rotating black hole \cite{chandrasekhar1983}. Outside the outer horizon $r_+$, the region between $r_+$ and the static limit surface defines the ergosphere, where no observer can remain stationary with respect to infinity due to the frame-dragging effect \cite{misner1973}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.55\textwidth]{gfx/figure2}
+	\caption{Schematic structure of the Kerr geometry, showing the outer and inner horizons and the ergosphere, as described by Eq.~\eqref{eq:kerr}.}
+	\label{fig:kerr}
+\end{figure}
+
+% ==========================
+\section{Geodesic Structure and the Innermost Stable Circular Orbit}
+% ==========================
+
+The separability of the Hamilton--Jacobi equation in Kerr spacetime, first shown by Carter \cite{carter1968}, allows the radial motion of test particles to be written in the effective form
+\begin{equation}
+	\left(\frac{dr}{d\tau}\right)^2 = R(r) = \left[E\left(r^2+a^2\right) - aL\right]^2 - \Delta\left[r^2 + (L-aE)^2 + \mathcal{Q}\right],
+	\label{eq:kerr-radial}
+\end{equation}
+where $\Delta$ is given in Eq.~\eqref{eq:kerr-aux}. For equatorial circular orbits ($\theta=\pi/2$, $\mathcal{Q}=0$), the conditions $R(r)=0$ and $R'(r)=0$ determine the radius of the innermost stable circular orbit (ISCO), which for a Kerr black hole depends explicitly on the spin parameter $a$ and ranges from $r_s/2$ for a maximally rotating (prograde) orbit to $3r_s$ for the non-rotating Schwarzschild case \cite{bardeen1972}.
+
+Table~\ref{tab:isco} summarizes the characteristic radii of interest for circular equatorial orbits in the Kerr geometry.
+
+\begin{table}[H]
+	\centering
+	\caption{Characteristic radii (in units of $r_s$) for circular equatorial orbits in the Kerr metric, for selected values of the spin parameter $a$.}
+	\label{tab:isco}
+	\begin{tabular}{lccc}
+		\hline
+		\textbf{Spin $a$} & \textbf{Horizon $r_+$} & \textbf{Photon orbit} & \textbf{ISCO (prograde)} \\
+		\hline
+		$0$ (Schwarzschild) \cite{schwarzschild1916} & $1.00\,r_s$ & $1.50\,r_s$ & $3.00\,r_s$ \\
+		$0.5\,r_s/2$ \cite{bardeen1972} & $0.87\,r_s$ & $1.25\,r_s$ & $2.20\,r_s$ \\
+		$r_s/2$ (extremal) \cite{kerr1963} & $0.50\,r_s$ & $0.50\,r_s$ & $0.50\,r_s$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:isco}, increasing the spin parameter $a$ shifts the prograde ISCO inward, a result of central importance for estimating the radiative efficiency of accretion disks around rotating black holes \cite{bardeen1972}. This behavior contrasts with the fixed ISCO radius of $3r_s$ obtained for the Schwarzschild solution discussed in Chapter~\ref{ch:chap1}.
+
+% ==========================
+\section{Astrophysical Relevance}
+% ==========================
+
+The geodesic properties derived above are not purely theoretical: the location of the ISCO directly determines the inner edge of geometrically thin accretion disks, shaping their observed spectra, while the photon orbit governs the size and shape of the black hole shadow \cite{eht2019}. The imaging of the supermassive black hole shadow in M87* has provided direct observational support for the strong-field predictions of the Kerr geometry summarized in this chapter \cite{eht2019}. Similarly, the inspiral and ringdown phases of compact binary mergers detected through gravitational waves encode information about the horizon structure of Eq.~\eqref{eq:kerr-horizons}, offering an independent astrophysical test of the theory \cite{ligo2016,teukolsky2015}.
+
+% ==========================
+\section{Conclusion}
+% ==========================
+
+This chapter derived the geodesic equations governing motion in stationary, axisymmetric spacetimes and applied them to the Kerr metric of Eq.~\eqref{eq:kerr}, highlighting the role of the Carter constant in separating the equations of motion and the dependence of the innermost stable circular orbit on the spin parameter $a$. Together with the Schwarzschild results of Chapter~\ref{ch:chap1}, these results provide the theoretical basis for the astrophysical interpretation of accretion disks and black hole shadows discussed throughout this work \cite{bardeen1972,eht2019}.

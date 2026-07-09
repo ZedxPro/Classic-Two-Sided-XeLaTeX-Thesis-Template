@@ -1,0 +1,876 @@
+% ==========================
+% Packages
+% ==========================
+
+% --- Frames ---
+\usepackage{mdframed}
+\usepackage{xcolor}
+
+\newmdenv[
+topline=false,
+bottomline=false,
+rightline=false,
+leftline=true,
+linewidth=3pt,
+linecolor=black,
+innerleftmargin=12pt,
+innerrightmargin=0pt,
+innertopmargin=4pt,
+innerbottommargin=4pt,
+backgroundcolor=white,
+skipabove=6pt,
+skipbelow=6pt
+]{leftbarbox}
+
+% --- Fonts & Languages ---
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[most]{tcolorbox}
+\usepackage{etoolbox}
+\usepackage{footmisc}
+\counterwithin*{footnote}{chapter}
+\usepackage{caption}
+
+% --- Layout ---
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{atbegshi}
+\usepackage{ifoddpage}
+\usepackage{marginnote}
+\usepackage{mparhack}
+\usepackage{marginfix}
+
+% --- Graphics ---
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta, positioning, patterns, shapes.geometric, fadings}
+\usepackage{pgfornament}
+\usepackage{pgfplots}
+\usepackage{fourier-orns}
+\usepackage{pifont}
+\pgfplotsset{compat=1.18}
+\setlength{\marginparsep}{0.6cm}
+\setlength{\marginparwidth}{3.2cm}
+% --- Math ---
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% --- Tables ---
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{array}
+\usepackage{wrapfig}
+% --- Figures ---
+\usepackage{subcaption}
+\usepackage{float}
+
+% --- Lists ---
+\usepackage{enumitem}
+
+% --- Hyperlinks ---
+\usepackage[
+colorlinks=true,
+linkcolor=black!80,
+citecolor=black,
+urlcolor=blue,
+bookmarks=true,
+bookmarksopen=true,
+backref=page,
+pdftitle={Natural Convection in a Closed Enclosure},
+pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
+]{hyperref}
+
+% ==========================
+% Theorem Style
+% ==========================
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% ==========================
+% Equation References
+% ==========================
+\def\equationautorefname{equation}
+\renewcommand{\eqref}[1]{%
+	\hyperref[#1]{\textcolor{chapterred}{(\ref*{#1})}}%
+}
+
+% ==========================
+% TOC Title Command
+% ==========================
+\newcommand{\TitleWord}[2]{%
+	{\fontsize{32}{36}\selectfont #1}{\scshape #2}%
+}
+
+% ==========================
+% Sections Formatting
+% ==========================
+\usepackage{titlesec}
+
+\titleformat{\section}
+{\normalfont\bfseries\fontsize{17}{20}\selectfont}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\bfseries\fontsize{14}{17}\selectfont}
+{\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\bfseries\fontsize{12}{15}\selectfont}
+{\thesubsubsection}{1em}{}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+% ==========================
+% TOC / LOT / LOF
+% ==========================
+\usepackage[table]{xcolor}
+\usepackage[titles]{tocloft}
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+	\@cfttocstart\par\begingroup
+	\parindent\z@\parskip\cftparskip
+	\@starttoc{toc}%
+	\endgroup\@cfttocfinish
+}
+\renewcommand{\listoftables}{\@starttoc{lot}}
+\renewcommand{\listoffigures}{\@starttoc{lof}}
+\renewenvironment{thebibliography}[1]{%
+	\list{\@biblabel{\@arabic\c@enumiv}}{%
+		\settowidth\labelwidth{\@biblabel{#1}}%
+		\leftmargin\labelwidth\advance\leftmargin\labelsep
+		\usecounter{enumiv}\let\p@enumiv\@empty
+		\renewcommand\theenumiv{\@arabic\c@enumiv}}%
+	\sloppy\clubpenalty4000\widowpenalty4000\sfcode`\.\@m
+}{\endlist}
+\makeatother
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% ==========================
+% Backref Formatting
+% ==========================
+\renewcommand*{\backrefsep}{, }
+\renewcommand*{\backreftwosep}{ and }
+\renewcommand*{\backreflastsep}{ and }
+\renewcommand*{\backref}[1]{}
+
+% ==========================
+% Bibliography Hyperlinks Numbers
+% ==========================
+\makeatletter
+\renewcommand*{\backrefalt}[4]{%
+	\ifnum#1=0\else
+	\nobreak\hfill\break
+	\vspace{-25pt}%
+	\begin{flushright}
+		\def\@lastpage{}%
+		\@for\@page:=#2\do{%
+			\ifx\@page\@lastpage\else
+			\begingroup
+			\hypersetup{linkcolor=chapterred}%
+			\setlength{\fboxsep}{2pt}%
+			\colorlet{backrefbg}{gray!15}
+			\colorlet{backrefborder}{gray!55}
+			\fcolorbox{backrefborder}{backrefbg}
+			{\footnotesize\bfseries\@page}%
+			\endgroup
+			\hspace{3pt}%
+			\let\@lastpage\@page
+			\fi
+		}%
+	\end{flushright}%
+	\fi
+}
+\makeatother
+
+% ==========================
+% Citation Formatting
+% ==========================
+\newcommand{\boxcite}[1]{%
+	\begingroup
+	\setlength{\fboxsep}{2.5pt}%
+	\setlength{\fboxrule}{0.8pt}%
+	\fcolorbox{black!20}{white}{%
+		\textcolor{black}{\footnotesize\bfseries#1}%
+	}%
+	\endgroup
+}
+
+\makeatletter
+\renewcommand{\@cite}[2]{%
+	\boxcite{[#1\if@tempswa , #2\fi]}%
+}
+\makeatother
+
+\emergencystretch=5em
+
+% ==========================
+% Caption Formatting
+% ==========================
+\captionsetup{
+	labelfont=bf,
+	textfont=normalfont
+}
+
+% ==========================
+% Languages & Fonts
+% ==========================
+\setmainlanguage{english}
+\setotherlanguages{arabic,french}
+
+\addto\captionsenglish{\renewcommand{\tablename}{Table}}
+\addto\captionsenglish{\renewcommand{\figurename}{Figure}}
+
+\newfontfamily\englishfont{TeX Gyre Pagella}
+\newfontfamily\frenchfont{TeX Gyre Pagella}
+\newfont{\chapterNumber}{pplr9d at 120pt}
+% ==========================
+% Geometry
+% ==========================
+\geometry{
+	top=2.5cm, bottom=2.5cm,
+	left=2.5cm, right=2.5cm,
+	headsep=0.8cm, includehead
+}
+\setlength{\headheight}{14pt}
+\linespread{1.09}
+
+% ==========================
+% Colors
+% ==========================
+\definecolor{chapterred}{RGB}{139, 0, 0}
+\definecolor{HeaderRuleColor}{RGB}{0,0,0}
+\definecolor{dimorange}{RGB}{225,125,0}
+\definecolor{dimred}{RGB}{192,0,0}
+\definecolor{chapterblack}{RGB}{0,0,0}
+\definecolor{citebg}{RGB}{224,242,241}
+\definecolor{citeborder}{RGB}{79,195,247}
+
+% ==========================
+% TikZ Styles
+% ==========================
+\newif\ifFANCY
+\FANCYtrue
+
+\newlength{\headerpadding}
+\setlength{\headerpadding}{2pt}
+
+\renewcommand*{\headrulewidth}{0.9pt}
+
+\tikzset{
+	header rule/.style  = {fill=HeaderRuleColor},
+	header decor/.style = {
+		draw=HeaderRuleColor,
+		line width=1.0pt,
+		-{Diamond[open]},
+		overlay
+	},
+}
+
+% ==========================
+% Header Rule
+% ==========================
+\newcommand{\dynamicheaderrule}{%
+	\checkoddpage
+	\ifoddpage
+	\begin{tikzpicture}[baseline=-1em]
+		\fill[header rule] (0,0) rectangle (\textwidth,0.9pt);
+		\ifFANCY
+		\draw[header decor] (\textwidth,\headrulewidth/2) -- ++(7pt,0);
+		\fi
+	\end{tikzpicture}%
+	\else
+	\begin{tikzpicture}[baseline=-1em]
+		\fill[header rule] (0,0) rectangle (\textwidth,0.9pt);
+		\ifFANCY
+		\draw[header decor] (0,\headrulewidth/2) -- ++(-7pt,0);
+		\fi
+	\end{tikzpicture}%
+	\fi
+	\linebreak[1]%
+}
+
+% ==========================
+% Saved Boxes
+% ==========================
+\newsavebox{\chapterheaderrule}
+\sbox{\chapterheaderrule}{%
+	\tikz[baseline=-1em]{%
+		\fill[header rule, path fading=west]
+		(0,0) rectangle (0.45\textwidth,\headrulewidth);
+		\ifFANCY
+		\draw[header decor] (0.45\textwidth,\headrulewidth/2) -- ++(7pt,0);
+		\fi
+	}%
+}
+
+\newsavebox{\titleDivider}
+\sbox{\titleDivider}{%
+	\tikz[baseline=-1em]{
+		\fill[black, path fading=west]
+		(0,0) rectangle (0.6\textwidth,\headrulewidth);
+		\ifFANCY
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(0.6\textwidth,\headrulewidth/2) -- ++(7pt,0);
+		\fi
+	}%
+}
+
+\newsavebox{\titleDividerSolid}
+\sbox{\titleDividerSolid}{%
+	\tikz[baseline=-1em]{
+		\fill[black] (0,0) rectangle (0.6\textwidth,\headrulewidth);
+		\ifFANCY
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(0.6\textwidth,\headrulewidth/2) -- ++(7pt,0);
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(0,\headrulewidth/2) -- ++(-7pt,0);
+		\fi
+	}%
+}
+
+\newcommand{\chapterDivider}[1][0pt]{%
+	\begin{tikzpicture}[baseline=-1em]
+		\fill[black, path fading=west]
+		(#1, 0) rectangle (\dimexpr\linewidth\relax, 0.9pt);
+		\ifFANCY
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(\dimexpr\linewidth\relax, 0.45pt) -- ++(7pt,0);
+		\fi
+	\end{tikzpicture}%
+}
+
+% ==========================
+% Helper: Page number with vertical rule
+% ==========================
+\newcommand{\PageNumWithRuleRight}[1]{%
+	\begin{tikzpicture}[baseline=0pt]
+		\node[anchor=base] (num) at (0,0) {\large#1};
+		\begin{scope}[overlay]
+			\fill[black, path fading=south]
+			([xshift=3.2pt]num.north east) rectangle ++(0.9pt,-1.8cm);
+		\end{scope}
+	\end{tikzpicture}%
+}
+
+\newcommand{\PageNumWithRuleLeft}[1]{%
+	\begin{tikzpicture}[baseline=0pt]
+		\node[anchor=base] (num) at (0,0) {\large#1};
+		\begin{scope}[overlay]
+			\fill[black, path fading=south]
+			([xshift=-4.8pt]num.north west) rectangle ++(0.9pt,-1.8cm);
+		\end{scope}
+	\end{tikzpicture}%
+}
+% ==========================
+% Page Styles
+% ==========================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand*{\headrule}{\dynamicheaderrule}
+
+\fancypagestyle{chapterfirst}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
+}
+
+\fancypagestyle{summary}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[C]{\thepage}%
+}
+
+\fancypagestyle{noheader}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\fancyfoot[LO,RE]{\large\thepage}%
+}
+
+\fancypagestyle{main}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{\dynamicheaderrule}%
+	\fancyhead[RO]{\small\leftmark}%
+	\fancyhead[LE]{\small\leftmark}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
+}
+
+\fancypagestyle{biblio}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{\dynamicheaderrule}%
+	\fancyhead[RO]{\normalsize\textit{References}}%
+	\fancyhead[LE]{\normalsize\textit{References}}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
+}
+
+\fancypagestyle{tocstyle}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[C]{\PageNumCentered{\thepage}}%
+}
+
+% ==========================
+% Number Style 
+% ==========================
+\newcommand{\PageNumCentered}[1]{%
+	\begin{tikzpicture}[baseline=0pt]
+		\node[anchor=base] (num) at (0,0) {\large#1};
+		\begin{scope}[overlay]
+
+			\fill[black, path fading=east]
+			([xshift=6pt]num.east) rectangle ([xshift=6pt+0.45cm, yshift=0.6pt]num.east);
+
+			\fill[black, path fading=west]
+			([xshift=-6pt]num.west) rectangle ([xshift=-6pt-0.45cm, yshift=0.6pt]num.west);
+		\end{scope}
+	\end{tikzpicture}%
+}
+% ==========================
+% Custom Section Header
+% ==========================
+\newcommand{\CustomSectionHeader}[2]{%
+	\clearpage
+	\thispagestyle{tocstyle}
+	\noindent
+	\begin{tikzpicture}
+		\node[anchor=north east] at (\textwidth,0){%
+			\begin{minipage}[t]{0.99\textwidth}
+				\raggedleft
+				{\scshape\fontsize{25}{32}\selectfont #1\par}
+				\vspace{3mm}
+				\usebox{\titleDivider}
+			\end{minipage}
+		};
+	\end{tikzpicture}%
+	\vspace{8mm}%
+	\pagestyle{tocstyle}%
+}
+
+\newcommand{\CustomTOC}{\CustomSectionHeader{Table of Contents}{Table of Contents}}
+\newcommand{\CustomLOT}{\CustomSectionHeader{List of Tables}{List of Tables}}
+\newcommand{\CustomLOF}{\CustomSectionHeader{List of Figures}{List of Figures}}
+\newcommand{\CustomNomenclature}{\CustomSectionHeader{Nomenclature}{Nomenclature}}
+\newcommand{\CustomBibliography}{\CustomSectionHeader{Bibliography}{Bibliography}}
+
+% ==========================
+% Custom Chapter
+% ==========================
+\newcommand{\CustomChapter}[2]{%
+	\cleardoublepage
+	\thispagestyle{chapterfirst}%
+	\noindent
+	\begin{tikzpicture}[remember picture, overlay]
+
+		\node[anchor=west, xshift=1.4cm, yshift=8cm, minimum size=3cm, inner sep=0pt, font=\chapterNumber\color{chapterred}] (num) at (current page.west) {#1};
+	
+		\node[anchor=south west, inner sep=0pt, xshift=0.6cm, yshift=8pt] (title) at (num.south east) {
+			\begin{minipage}[b]{\dimexpr\linewidth - 4cm\relax}  
+				
+				\raggedright
+				\scshape\fontsize{25}{32}\selectfont #2\par
+			\end{minipage}
+		};
+
+		\draw[line width=1.2pt] (num.north east) -- (num.north west) -- (num.south west) -- (\linewidth, 0 |- num.south west);
+		
+		\draw[line width=1.2pt, -{Diamond[open]}] (\linewidth, 0 |- num.south west) -- ++(0.1pt,0);
+		
+		\draw[line width=1.2pt] (num.north east) -- (num.south east);
+		
+		\fill[black, path fading=south] ([xshift=-0.6pt]num.south east) rectangle ([xshift=0.6pt, yshift=-2.5cm]num.south east);
+		
+	\end{tikzpicture}%
+
+	\vspace*{7cm}% 
+}
+% ==========================
+% Independent Chapter Quote (dynamic height, right-aligned)
+% ==========================
+\newcommand{\ChapterQuote}[2]{%
+	\begin{tikzpicture}[remember picture, overlay]
+
+		\node[anchor=north east, font=\small\itshape, align=right, text width=0.45\linewidth]
+		(cqtext) at ($(current page.north east)+(-2.3cm,-2cm)$) {``#1''};
+		
+		\draw[line width=1.2pt]
+		($(cqtext.south east)+(-0.4\linewidth,-0.15cm)$) --
+		($(cqtext.south east)+(0,-0.15cm)$);
+		
+		\node[anchor=north east, font=\small, align=right]
+		(cqauthor) at ($(cqtext.south east)+(0,-0.15cm)$) {\textemdash\ #2};
+	\end{tikzpicture}%
+}
+% ==========================
+% SCRIPT Intro 
+% ==========================
+\newlength{\introtitlewidth}
+\newcommand{\AutoDividerSolid}[1]{%
+	\begin{tikzpicture}[baseline=-1em]
+		\fill[black] (0,0) rectangle (#1,0.9pt);
+		\ifFANCY
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(#1,0.45pt) -- ++(7pt,0);
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(0,0.45pt) -- ++(-7pt,0);
+		\fi
+	\end{tikzpicture}%
+}
+% ==========================
+% Custom Intro
+% ==========================
+\newcommand{\CustomIntro}[2]{%
+	\clearpage
+	\thispagestyle{chapterfirst}%
+	\settowidth{\introtitlewidth}{\scshape\huge #2}%
+	\begin{center}
+		{{\chapterNumber\color{chapterred} #1}}\\[3mm]
+		\AutoDividerSolid{\introtitlewidth}\\[3mm]
+		{\scshape\huge #2}%
+	\end{center}
+	\vspace{12mm}%
+	\pagestyle{fancy}%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{\dynamicheaderrule}%
+	\fancyhead[RO]{\normalsize\textit{\nouppercase{\leftmark}}}%
+	\fancyhead[LE]{\normalsize\textit{\nouppercase{\leftmark}}}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
+}
+% ==========================
+% Custom Appendix
+% ==========================
+\newcommand{\CustomAppendixIntro}[2]{%
+	\cleardoublepage
+	\thispagestyle{chapterfirst}%
+	\renewcommand{\thechapter}{#1}%
+	\noindent
+	\begin{tikzpicture}[remember picture, overlay]
+		%---------------------------------
+
+		%---------------------------------
+		\coordinate (marginLeft)  at ($(current page.west)+(4.6cm,0)$);
+		\coordinate (marginRight) at ($(current page.east)+(-2.3cm,0)$);
+		
+		%---------------------------------
+		% Large appendix letter
+		%---------------------------------
+		\node[
+		anchor=west,
+		xshift=1cm,
+		yshift=8cm,
+		minimum size=3cm,
+		inner sep=0pt,
+		font=\fontsize{120}{120}\selectfont\color{chapterred}
+		] (num) at (current page.west) {#1};
+		
+		%---------------------------------
+		% Appendix title
+		%---------------------------------
+		\node[
+		anchor=south west,
+		inner sep=0pt,
+		xshift=0.6cm,
+		yshift=8pt
+		] (title)
+		at (num.south east)
+		{
+			\begin{minipage}[b]{\dimexpr\linewidth-4cm\relax}
+				\raggedright
+				\scshape
+				\fontsize{25}{32}\selectfont
+				#2\par
+			\end{minipage}
+		};
+		
+		%---------------------------------
+
+		%---------------------------------
+		\draw[line width=1.2pt]
+		(marginLeft |- num.south east)
+		--
+		(marginRight |- num.south east);
+		
+		%---------------------------------
+		% Diamond
+		%---------------------------------
+		\draw[
+		line width=1.2pt,
+		-{Diamond[open]}
+		]
+		(marginRight |- num.south east)
+		--
+		++(0.1pt,0);
+		
+	\end{tikzpicture}
+	\vspace*{7cm}
+}
+% ==========================
+% SCRIPT 
+% ==========================
+\newlength{\autotitlewidth}
+\newcommand{\AutoTitleLines}[1]{%
+	\settowidth{\autotitlewidth}{\Large\textbf{\MakeUppercase{#1}}}%
+	{\Large\textbf{\MakeUppercase{#1}}}\\[3mm]%
+	\begin{tikzpicture}[baseline=-1em]
+		\fill[black, path fading=west]
+		(0,0) rectangle (\autotitlewidth, 0.9pt);
+		\draw[draw=black, line width=1.0pt, -{Diamond[open]}, overlay]
+		(\autotitlewidth, 0.45pt) -- ++(7pt,0);
+		\fill[black, path fading=east]
+		(0,-3pt) rectangle (\autotitlewidth, -3pt+0.9pt);
+		\draw[draw=black, line width=1.0pt, {Diamond[open]}-, overlay]
+		(0, -3pt+0.45pt) -- ++(-7pt,0);
+	\end{tikzpicture}%
+	\\[0.6cm]%
+}
+% ==========================
+% Dedication
+% ==========================
+\newbool{showcorners}
+\boolfalse{showcorners}
+
+\AtBeginShipout{%
+	\ifbool{showcorners}{%
+		\AtBeginShipoutUpperLeft{%
+			\begin{tikzpicture}[remember picture, overlay]
+				\node[anchor=north west, xshift=1cm, yshift=-1cm]
+				at (current page.north west)
+				{\pgfornament[width=2.2cm]{63}};
+				\node[anchor=north east, xshift=-1cm, yshift=-1cm]
+				at (current page.north east)
+				{\pgfornament[width=2.2cm, symmetry=v]{63}};
+				\node[anchor=south west, xshift=1cm, yshift=1cm]
+				at (current page.south west)
+				{\pgfornament[width=2.2cm, symmetry=h]{63}};
+				\node[anchor=south east, xshift=-1cm, yshift=1cm]
+				at (current page.south east)
+				{\pgfornament[width=2.2cm, symmetry=c]{63}};
+			\end{tikzpicture}%
+		}%
+	}{}%
+}
+
+\newcommand{\DedicateMe}[2]{%
+	\newpage
+	\thispagestyle{empty}
+	\pagecolor{white}%
+	\booltrue{showcorners}%
+	\begingroup
+	\fontspec{Libertinus Serif}%
+	\vspace*{\fill}
+	\begin{center}
+		\AutoTitleLines{Dedication}
+	\end{center}
+	\vspace{0.6cm}
+	\begin{center}
+		{\large\itshape
+			#1
+		}
+	\end{center}
+	\vspace{0.5cm}
+	\begin{flushright}
+		{\normalsize\textbf{\textemdash~#2}}
+	\end{flushright}
+	\vspace*{\fill}
+	\endgroup
+	\boolfalse{showcorners}%
+}
+
+% ==========================
+% Acknowledgments
+% ==========================
+\newcommand{\Acknowledgments}[1]{%
+	\newpage
+	\thispagestyle{empty}
+	\pagecolor{white}%
+	\begingroup
+	\fontspec{Libertinus Serif}%
+	\vspace*{\fill}
+	\begin{center}
+		\AutoTitleLines{Acknowledgments}
+	\end{center}
+	\vspace{0.6cm}
+	\begin{center}
+		\setlength{\parskip}{0.4cm}
+		{\large\upshape
+			#1
+		}
+	\end{center}
+	\vspace*{\fill}
+	\endgroup
+}
+
+% ==========================
+% Reset Counters
+% ==========================
+\newcommand{\ResetCounters}[1]{%
+	\setcounter{chapter}{#1}
+	\setcounter{section}{0}
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\setcounter{equation}{0}
+	\setcounter{footnote}{0}
+	\numberwithin{equation}{chapter}
+}
+
+% ==========================
+% Chapter Header
+% ==========================
+\newcommand{\ChapterHeader}{%
+	\pagestyle{fancy}%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{\dynamicheaderrule}%
+	\fancyhead[RO]{\normalsize Chapter \thechapter.\ \textit{\leftmark}}%
+	\fancyhead[LE]{\normalsize Chapter \thechapter.\ \textit{\leftmark}}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
+	\thispagestyle{chapterfirst}%
+}
+
+% ==========================
+% Appendix Header
+% ==========================
+\newcommand{\AppendixHeader}{%
+	\pagestyle{fancy}%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{\dynamicheaderrule}%
+	\fancyhead[RO]{\normalsize Appendix \thechapter.\ \textit{\leftmark}}%
+	\fancyhead[LE]{\normalsize Appendix \thechapter.\ \textit{\leftmark}}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
+	\thispagestyle{chapterfirst}%
+}
+
+% ==========================
+% Custom Part
+% ==========================
+\newcommand{\InlinePart}[1]{%
+	\clearpage
+	\thispagestyle{chapterfirst}
+	\vspace*{0cm}
+	\begin{center}
+		\begin{tikzpicture}
+			\node[inner sep=0pt, anchor=south west] (parttext) at (0,-0.25)
+			{\fontspec{Libertinus Serif}\fontsize{16pt}{18pt}\selectfont part};
+			\node[inner sep=0pt, anchor=south west, text=chapterred] (numtext) at (1.4,-0.15)
+			{\fontspec{Libertinus Serif}\fontsize{55pt}{55pt}\selectfont #1};
+			
+			\draw[line width=0.9pt, -{Diamond[open]}]
+			(-0.05, 1.1) -- (1.35, 1.1);
+			\fill[black, path fading=west]
+			(2.45, 1.0842) rectangle (\linewidth, 1.1158);
+			\draw[line width=0.9pt, {Diamond[open]}-]
+			(2.6, -0.08) -- (\linewidth, -0.08);
+			\draw[line width=0.9pt]
+			(-0.05, 0.52) -- (-0.05, 1.1);
+			\draw[line width=0.9pt]
+			(\linewidth, -0.08) -- (\linewidth, 1.1);
+		\end{tikzpicture}
+	\end{center}
+	\vspace{1.5em}
+}
+
+% ==========================
+% cleardoublepage Override
+% ==========================
+\renewcommand{\cleardoublepage}{%
+	\clearpage
+	\ifodd\value{page}\else
+	\thispagestyle{empty}%
+	\hbox{}%
+	\newpage
+	\fi
+}
+
+% ==========================
+% Equation Tags (margin)
+% ==========================
+\makeatletter
+\renewcommand{\maketag@@@}[1]{%
+	\checkoddpage
+	\ifoddpage
+	\marginnote{#1}[0pt]%                  ← mode
+	\else
+	\marginnote{\hspace*{-2cm}#1}[0pt]%
+	\fi
+	\ignorespaces
+}
+\newcommand{\marginremark}[1]{%
+	\marginpar[\raggedleft\small\itshape #1]{\small\itshape #1}
+}
+\makeatother
+% ==========================
+% Objective Box (respects margins)
+% ==========================
+\newcommand{\ObjectiveBox}[1]{%
+	\begin{center}
+		\setlength{\fboxsep}{8pt}%
+		\setlength{\fboxrule}{0.6pt}%
+		\fbox{%
+			\begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+				\centering
+				#1
+			\end{minipage}%
+		}%
+	\end{center}%
+}
+
+\raggedbottom
+% ==========================
+% TOC / LOF / LOT Numbers
+% ==========================
+\renewcommand{\cftchappagefont}{\color{chapterred}}
+\renewcommand{\cftsecpagefont}{\color{chapterred}}
+\renewcommand{\cftsubsecpagefont}{\color{chapterred}}
+\renewcommand{\cftsubsubsecpagefont}{\color{chapterred}}
+\renewcommand{\cftfigpagefont}{\color{chapterred}}
+\renewcommand{\cfttabpagefont}{\color{chapterred}}
+% --------------------------
+\renewcommand{\cftfigpresnum}{\color{black}}
+\renewcommand{\cftfigaftersnumb}{\color{black!80}}
+
+\renewcommand{\cfttabpresnum}{\color{black}}
+\renewcommand{\cfttabaftersnumb}{\color{black!80}}
+% ==========================
+% Shape After Introduction
+% ==========================
+\newcommand{\perfectdivider}{%
+	\nopagebreak
+	\begin{center}
+		
+		\rule[0.6ex]{0.10\linewidth}{0.5pt}%  % Left horizontal line
+		\quad
+		% Left flourish
+		\decofourleft
+		\kern-0.001em % Reduce the spacing slightly
+		% Rotate around the center (origin=c) and raise it slightly (0.3ex)
+		% so that it is perfectly centered on the line
+		\raisebox{0.3ex}{\rotatebox[origin=c]{290}{\ding{167}}} 
+		\kern-0.2em % Reduce the spacing slightly
+		% Right flourish
+		\decofourright
+		\quad
+		% Right horizontal line
+		\rule[0.6ex]{0.10\linewidth}{0.5pt}%
+	\end{center}
+}
+% ==========================
+% Line Spread
+% ==========================
+\linespread{1.1}
+%-----------------------------------------------------------------

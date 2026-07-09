@@ -1,0 +1,51 @@
+\InlinePart{I}
+
+Beyond the frequency-domain characterization of Section~\ref{ch:chap4}, quasinormal modes are commonly extracted directly from the time-domain strain data by modeling the post-merger signal as a superposition of damped sinusoids, following the general form already introduced in Eq.~\eqref{eq:qnm-bc},
+\begin{equation}
+	h(t) = \sum_{n} A_n \, e^{-t/\tau_n} \cos(\omega_{R,n} t + \phi_n), \qquad t \geq t_0,
+	\label{eq:ringdown-fit}
+\end{equation}
+where $\tau_n = 1/\omega_{I,n}$ is the damping time of the $n$-th overtone, related to the imaginary part of the quasinormal frequency defined in Eq.~\eqref{eq:qnm-bc}, and $t_0$ denotes the start time of the fit, conventionally referenced to the time of peak strain amplitude \cite{isi2019}.
+\marginpar{\footnotesize The choice of $t_0$ is critical: fits performed too close to merger require several overtones to remain accurate, since the linear perturbation regime has not yet fully set in.}
+A central debate in this approach concerns how many overtones $n$ must be included in Eq.~\eqref{eq:ringdown-fit} for the fit to remain both stable and physically meaningful at early times. Some analyses report evidence for a subdominant overtone in GW150914 already at $t_0$ close to the peak \cite{isi2019}, while subsequent reanalyses using different fitting priors and start times have questioned the statistical significance of this detection \cite{cotesta2022}. Table~\ref{tab:overtone} summarizes representative estimates of the fundamental mode and first overtone reported for GW150914 under two commonly used start-time conventions.
+
+\begin{table}[H]
+	\centering
+	\caption{Representative fundamental mode ($n=0$) and first overtone ($n=1$) frequencies inferred from the GW150914 ringdown, for two choices of the fit start time $t_0$ relative to the peak strain amplitude $t_{\mathrm{peak}}$, in units of $c^3/(GM)$.}
+	\label{tab:overtone}
+	\begin{tabular}{lcc}
+		\hline
+		\textbf{Start time} & \textbf{$\omega_{R,0}$} & \textbf{$\omega_{R,1}$} \\
+		\hline
+		$t_0 = t_{\mathrm{peak}}$ \cite{isi2019} & $0.373$ & $0.610$ \\
+		$t_0 = t_{\mathrm{peak}} + 10M$ \cite{cotesta2022} & $0.374$ & $0.598$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\InlinePart{II}
+
+\marginpar{\footnotesize A useful figure of merit is the fractional precision on a given quasinormal frequency, $\delta\omega_{n\ell}/\omega_{n\ell} \propto 1/\mathrm{SNR}$, so an order-of-magnitude gain in SNR translates directly into an order-of-magnitude tighter bound on deviations from Kerr.}
+The precision with which the no-hair theorem can be tested through ringdown observations is fundamentally limited by the signal-to-noise ratio (SNR) of the post-merger signal, which for current ground-based detectors is typically too low to resolve more than the fundamental mode identified in Table~\ref{tab:qnm} with confidence \cite{berti2009}. Next-generation observatories are expected to substantially improve this situation. Third-generation ground-based detectors such as the Einstein Telescope and Cosmic Explorer, together with the space-based LISA mission targeting massive black hole mergers, are projected to deliver ringdown SNRs large enough to resolve multiple overtones and angular modes routinely \cite{berti2016}.
+Within a parametrized post-Kerr framework, deviations from the general-relativistic spectrum are encoded as fractional shifts $\delta\omega_{n\ell}$ and $\delta\tau_{n\ell}$ relative to the Kerr predictions obtained from the master equation of Section~\ref{ch:chap4},
+\begin{equation}
+	\omega_{n\ell} = \omega_{n\ell}^{\mathrm{Kerr}}(M,a)\left[1 + \delta\omega_{n\ell}\right], \qquad
+	\tau_{n\ell} = \tau_{n\ell}^{\mathrm{Kerr}}(M,a)\left[1 + \delta\tau_{n\ell}\right],
+	\label{eq:parametrized-postkerr}
+\end{equation}
+\begin{table}[H]
+	\centering
+	\caption{Projected fractional precision on the fundamental-mode deviation parameter $\delta\omega_{20}$ of Eq.~\eqref{eq:parametrized-postkerr}, for a representative GW150914-like event observed by current and next-generation detectors \cite{berti2016}.}
+	\label{tab:snr-forecast}
+	\begin{tabular}{lcc}
+		\hline
+		\textbf{Detector} & \textbf{Ringdown SNR} & \textbf{$\delta\omega_{20}$ precision} \\
+		\hline
+		LIGO (current) \cite{isi2019} & $\sim 10$ & $\sim 10\%$ \\
+		Einstein Telescope \cite{berti2016} & $\sim 100$ & $\sim 1\%$ \\
+		LISA (massive BBH) \cite{berti2016} & $\gtrsim 1000$ & $\lesssim 0.1\%$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+The combination of improved detector sensitivity with such parametrized tests, encoded through Eq.~\eqref{eq:parametrized-postkerr}, positions black hole spectroscopy as one of the most promising avenues for probing the strong-field regime of gravity in the coming decade.

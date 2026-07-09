@@ -1,0 +1,57 @@
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Thesis Overview}
+\CustomSectionHeader{Thesis Overview}{Thesis Overview}
+
+\newcommand{\chapref}[2]{%
+	\hyperref[#1]{%
+		\tikz[baseline=(n.base)]{%
+			\node[
+			inner sep=2.5pt,
+			outer sep=0pt,
+			fill=white,
+			draw=black,
+			line width=0.6pt,
+			font=\bfseries,
+			rounded corners=1.5pt
+			] (n) {\textcolor{chapterred}{#2}};%
+		}%
+	}%
+}
+
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\begin{leftbarbox}
+The \chapref{ch:intro}{General Introduction} presents the research context, the motivations behind this work, and the main objectives pursued throughout the thesis.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+In \chapref{ch:chap1}{Chapter 1}, we recall the geometric foundations of general relativity, introduce the Einstein field equations, and derive the Schwarzschild solution, which serves as the reference exact solution used throughout this work.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+\chapref{ch:chap2}{Chapter 2} extends this framework to rotating compact objects through the Kerr metric, presenting the geodesic equations, the associated conserved quantities, and the spin dependence of the innermost stable circular orbit.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+\chapref{ch:chap3}{Chapter 3} implements a numerical ray-tracing procedure to integrate null geodesics in the Schwarzschild and Kerr geometries, allowing the computation of gravitational lensing effects and the black hole shadow, which is compared with Event Horizon Telescope observations of M87*.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+\chapref{ch:chap4}{Chapter 4} addresses the dynamical response of these spacetimes to small perturbations, introducing the quasinormal mode spectrum and the black hole spectroscopy approach, illustrated through the ringdown analysis of the gravitational-wave event GW150914.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+The \chapref{ch:conclusion}{General Conclusion} summarizes the main findings of this work and outlines promising directions for future research.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+\chapref{ann:A}{Appendix A} validates the numerical methods used in Chapters~\ref{ch:chap3} and~\ref{ch:chap4}, comparing the ray-tracing and quasinormal mode codes against known analytical and reference results.
+\end{leftbarbox}
+
+\begin{leftbarbox}
+\chapref{ann:B}{Appendix B} collects complementary analytical derivations, including the Christoffel symbols of the Schwarzschild metric and the circular-orbit conditions in the Kerr geometry underlying the results of Chapters~\ref{ch:chap1} and~\ref{ch:chap2}.
+\end{leftbarbox}
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.5em}

@@ -1,0 +1,102 @@
+\documentclass[12pt,a4paper,twoside]{report}
+
+% ==========================
+% Preamble (packages, colors, custom commands)
+% ==========================
+\input{Preamble}
+
+%-----------------------------------------------------------------
+\begin{document}
+	\pagenumbering{alph}
+
+	% ==========================
+	% Title Page
+	% ==========================
+	\input{FrontBackMatter/Titlepage}
+
+	% ==========================
+	% Dedication
+	% ==========================
+	\input{FrontBackMatter/Dedication}
+
+	% ==========================
+	% Acknowledgements
+	% ==========================
+	\input{FrontBackMatter/Acknowledgments}
+
+	% ==========================
+	% Abstract
+	% ==========================
+	\input{FrontBackMatter/Abstract}
+
+	% ==========================
+	% Table of Contents / List of Tables / List of Figures
+	% ==========================
+	\input{FrontBackMatter/Contents}
+	
+	% ==========================
+	% Nomenclature
+	% ==========================
+	\input{FrontBackMatter/Nomenclature}
+	
+	% ==========================
+	% Thesis Overview
+	% ==========================
+	\input{Chapters/Thesisoverview}
+
+	% ==========================
+	% General Introduction + Thesis Overview
+	% ==========================
+	\input{Chapters/Introduction}
+	
+	% ==========================
+	% Chapter 1
+	% ==========================
+	\input{Chapters/Chapter01}
+
+	% ==========================
+	% Chapter 2
+	% ==========================
+	\input{Chapters/Chapter02}
+
+	% ==========================
+	% Chapter 3
+	% ==========================
+	\input{Chapters/Chapter03}
+
+	% ==========================
+	% Chapter 4
+	% ==========================
+	\input{Chapters/Chapter04}
+	
+	% ==========================
+	% Custom Part 1
+	% ==========================
+	\input{Chapters/CustomPart1}
+
+	% ==========================
+	% General Conclusion
+	% ==========================
+	\input{Chapters/Conclusion}
+	
+	% ==========================
+	% Annexes 
+	% ==========================
+	\input{Appendix/AppendixIntro}
+
+	% ==========================
+	% Annexes / Appendix A
+	% ==========================
+	\input{Appendix/AppendixA}
+	
+	% ==========================
+	% Annexes / Appendix B
+	% ==========================
+	\input{Appendix/AppendixB}
+
+	% ==========================
+	% Bibliography
+	% ==========================
+	\input{FrontBackMatter/Bibliography}
+
+\end{document}

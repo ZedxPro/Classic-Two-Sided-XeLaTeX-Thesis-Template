@@ -1,0 +1,33 @@
+	% ==========================
+	% Bibliography
+	% ==========================
+	\clearpage
+	\pagestyle{biblio}
+	\CustomBibliography
+	\phantomsection
+	\addcontentsline{toc}{chapter}{Bibliography}
+	
+	\noindent\small Page references where each publication is cited are indicated by
+	\tikz[baseline=(n.base)]{
+		\node[
+		inner sep=2pt,
+		outer sep=0pt,
+		fill=gray!20,
+		draw=gray!55,
+		line width=0.6pt,
+		font=\bfseries\footnotesize,
+		rounded corners=1.5pt
+		] (n) {\textcolor{chapterred}{\textbullet}};
+	}\,.
+	\vspace{6pt}
+	
+	\bibliographystyle{unsrt}
+	
+	\begingroup
+	\makeatletter
+	\let\oldChapter\chapter
+	\renewcommand{\chapter}{\@ifstar{\@gobble}{\@dblarg{\@gobbletwo}}}
+	\bibliography{Bibliography}
+	\let\chapter\oldChapter
+	\makeatother
+	\endgroup

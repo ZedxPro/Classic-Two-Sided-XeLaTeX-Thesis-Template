@@ -1,0 +1,58 @@
+% ==========================
+% Appendix B -- Complementary Analytical Derivations
+% ==========================
+\cleardoublepage
+\CustomAppendixIntro{B}{Complementary Analytical Derivations}
+
+\setcounter{chapter}{2} % internal counters only (equations, figures...)
+\setcounter{figure}{0}
+\setcounter{table}{0}
+\addcontentsline{toc}{chapter}{Appendix B -- Complementary Analytical Derivations}
+
+\markboth{Complementary Analytical Derivations}{}
+\label{ann:B}
+
+\AppendixHeader
+
+\section*{Introduction}
+
+This appendix collects intermediate analytical derivations that were omitted from the main text for the sake of readability. We detail the computation of the Christoffel symbols and curvature invariants of the Schwarzschild metric used in Chapter~\ref{ch:chap1}, and derive the circular-orbit conditions in the Kerr geometry that underlie the innermost stable circular orbit discussed in Chapter~\ref{ch:chap2}.
+
+\section*{Christoffel Symbols of the Schwarzschild Metric}
+
+For the Schwarzschild line element of Eq.~\eqref{eq:schwarzschild}, written with $f(r) = 1 - r_s/r$, the metric components are diagonal, $g_{tt}=-f(r)c^2$, $g_{rr}=f(r)^{-1}$, $g_{\theta\theta}=r^2$, and $g_{\phi\phi}=r^2\sin^2\theta$. The non-vanishing Christoffel symbols $\Gamma^{\mu}_{\alpha\beta} = \tfrac{1}{2}g^{\mu\nu}\left(\partial_\alpha g_{\nu\beta} + \partial_\beta g_{\nu\alpha} - \partial_\nu g_{\alpha\beta}\right)$ follow directly from Eq.~\eqref{eq:metric} and read \cite{wald1984}
+\begin{equation}
+	\Gamma^{t}_{tr} = \frac{f'(r)}{2f(r)}, \qquad
+	\Gamma^{r}_{tt} = \frac{c^2 f(r) f'(r)}{2}, \qquad
+	\Gamma^{r}_{rr} = -\frac{f'(r)}{2f(r)},
+	\label{eq:christoffel-schw-1}
+\end{equation}
+\begin{equation}
+	\Gamma^{r}_{\theta\theta} = -r f(r), \qquad
+	\Gamma^{r}_{\phi\phi} = -r f(r) \sin^2\theta, \qquad
+	\Gamma^{\theta}_{r\theta} = \Gamma^{\phi}_{r\phi} = \frac{1}{r},
+	\label{eq:christoffel-schw-2}
+\end{equation}
+\begin{equation}
+	\Gamma^{\theta}_{\phi\phi} = -\sin\theta\cos\theta, \qquad
+	\Gamma^{\phi}_{\theta\phi} = \cot\theta,
+	\label{eq:christoffel-schw-3}
+\end{equation}
+where $f'(r)=r_s/r^2$. Substituting Eqs.~\eqref{eq:christoffel-schw-1}--\eqref{eq:christoffel-schw-3} into the geodesic equation~\eqref{eq:geodesic} and restricting to equatorial motion ($\theta=\pi/2$) reproduces the radial equation of motion of Eq.~\eqref{eq:photon-radial} used in Chapter~\ref{ch:chap3} \cite{hartle2003}.
+
+The associated Kretschmann scalar, a curvature invariant that remains finite everywhere except at the physical singularity $r=0$, is given by
+\begin{equation}
+	K = R_{\mu\nu\rho\sigma}R^{\mu\nu\rho\sigma} = \frac{12\,r_s^2}{r^6},
+	\label{eq:kretschmann}
+\end{equation}
+confirming that the event horizon $r=r_s$ is a coordinate singularity rather than a physical one, since $K$ remains finite there \cite{misner1973}.
+
+\section*{Circular-Orbit Conditions in the Kerr Geometry}
+
+The innermost stable circular orbit quoted in Table~\ref{tab:isco} follows from imposing $R(r)=R'(r)=R''(r)=0$ simultaneously on the effective radial potential of Eq.~\eqref{eq:kerr-radial}, restricted to equatorial motion ($\mathcal{Q}=0$). The first two conditions determine the energy and angular momentum of a circular orbit at radius $r$,
+\begin{equation}
+	E = \frac{r^{3/2} - r_s r^{1/2} \pm a\sqrt{r_s/2}}{r^{3/4}\sqrt{r^{3/2} - \tfrac{3}{2}r_s r^{1/2} \pm 2a\sqrt{r_s/2}}}\,c^2, \qquad
+	L = \pm\frac{\sqrt{r_s/2}\left(r^2 \mp 2a\sqrt{r_s r/2} + a^2\right)}{r^{3/4}\sqrt{r^{3/2}-\tfrac{3}{2}r_s r^{1/2}\pm 2a\sqrt{r_s/2}}},
+	\label{eq:kerr-circular}
+\end{equation}
+where the upper (lower) sign corresponds to prograde (retrograde) orbits \cite{bardeen1972}. Imposing the additional marginal-stability condition $R''(r)=0$ on Eq.~\eqref{eq:kerr-circular} yields the implicit equation for the ISCO radius reported numerically in Table~\ref{tab:isco}, which reduces to $r_{\text{ISCO}}=6GM/c^2=3r_s$ in the Schwarzschild limit $a\to 0$, consistent with the Newtonian intuition that stable circular orbits require a sufficiently steep effective potential well \cite{chandrasekhar1983}.

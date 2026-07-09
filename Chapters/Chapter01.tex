@@ -1,0 +1,86 @@
+% ==========================
+% Chapter 1
+% ==========================
+\cleardoublepage
+\ResetCounters{1}
+\CustomChapter{1}{Theoretical Framework of General Relativity}
+\ChapterQuote{Imagination is more important than knowledge.}{Albert Einstein}
+\phantomsection
+\addcontentsline{toc}{chapter}{Chapter 1: Theoretical Framework of General Relativity}
+\markboth{Theoretical Framework of General Relativity}{}
+\ChapterHeader
+
+\section{Introduction}
+\label{ch:chap1}
+This chapter introduces the theoretical foundations required for the study developed in this thesis. We first recall the geometric formulation of general relativity through the Einstein field equations, then present the Schwarzschild solution as the reference exact solution used throughout this work \cite{einstein1916,wald1984}.
+
+% ==========================
+\section{Geometric Foundations}
+% ==========================
+
+General relativity describes gravitation not as a force, but as a manifestation of spacetime curvature. The geometry of spacetime is encoded in the metric tensor $g_{\mu\nu}$, which defines the invariant interval
+\begin{equation}
+	ds^2 = g_{\mu\nu}\,dx^{\mu}dx^{\nu},
+	\label{eq:metric}
+\end{equation}
+using the Einstein summation convention over repeated indices \cite{misner1973}.\marginpar{\footnotesize Greek indices run from $0$ to $3$, with $x^0=ct$.}
+
+The curvature of spacetime is related to the distribution of matter and energy through the Einstein field equations
+\begin{equation}
+	G_{\mu\nu} \;=\; R_{\mu\nu} - \tfrac{1}{2}R\,g_{\mu\nu} \;=\; \frac{8\pi G}{c^4}\,T_{\mu\nu},
+	\label{eq:efe}
+\end{equation}
+where $R_{\mu\nu}$ is the Ricci tensor, $R$ the scalar curvature, and $T_{\mu\nu}$ the stress-energy tensor \cite{wald1984}. As stated in Eq.~\eqref{eq:efe}, the left-hand side is purely geometric while the right-hand side encodes the physical matter content, illustrating the interplay expressed by Wheeler's summary: matter tells spacetime how to curve, and spacetime tells matter how to move\footnote{This heuristic formulation, attributed to J. A. Wheeler, is widely used in introductory treatments of general relativity \cite{misner1973}.}.
+
+% ==========================
+\section{The Schwarzschild Solution}
+% ==========================
+
+For a static, spherically symmetric mass distribution in vacuum ($T_{\mu\nu}=0$), Eq.~\eqref{eq:efe} admits the exact Schwarzschild solution \cite{schwarzschild1916}
+\begin{equation}
+	ds^2 = -\left(1-\frac{2GM}{c^2 r}\right)c^2 dt^2 + \left(1-\frac{2GM}{c^2 r}\right)^{-1} dr^2 + r^2\, d\Omega^2,
+	\label{eq:schwarzschild}
+\end{equation}
+where $d\Omega^2 = d\theta^2 + \sin^2\theta\, d\phi^2$ is the metric on the unit sphere. The quantity
+\begin{equation}
+	r_s = \frac{2GM}{c^2}
+	\label{eq:rs}
+\end{equation}
+defines the Schwarzschild radius, corresponding to the event horizon of a non-rotating black hole \cite{chandrasekhar1983}. Equation~\eqref{eq:schwarzschild} reduces to the flat Minkowski metric as $r \to \infty$, recovering special relativity far from the mass \cite{hartle2003}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.55\textwidth]{gfx/figure1}
+	\caption{Embedding diagram illustrating the curvature of spacetime around a spherical mass, as described by the Schwarzschild metric (Eq.~\eqref{eq:schwarzschild}).}
+	\label{fig:schwarzschild}
+\end{figure}
+
+% ==========================
+\section{Comparison of Exact Solutions}
+% ==========================
+
+Table~\ref{tab:solutions} summarizes the main properties of the exact solutions considered as reference cases in relativistic astrophysics.
+
+\begin{table}[H]
+	\centering
+	\caption{Comparison of classical exact solutions of the Einstein field equations.}
+	\label{tab:solutions}
+	\begin{tabular}{lccc}
+		\hline
+		\textbf{Solution} & \textbf{Symmetry} & \textbf{Charge} & \textbf{Angular momentum} \\
+		\hline
+		Schwarzschild \cite{schwarzschild1916} & Spherical & No & No \\
+		Reissner--Nordstr\"om \cite{reissner1916} & Spherical & Yes & No \\
+		Kerr \cite{kerr1963} & Axial & No & Yes \\
+		Kerr--Newman \cite{newman1965} & Axial & Yes & Yes \\
+		\hline
+	\end{tabular}
+\end{table}
+
+As shown in Table~\ref{tab:solutions}, the Schwarzschild metric of Eq.~\eqref{eq:schwarzschild} corresponds to the simplest case, from which the more general rotating and charged solutions can be derived \cite{kerr1963}.
+
+% ==========================
+\section{Conclusion}
+% ==========================
+
+This chapter recalled the geometric foundations of general relativity, culminating in the derivation of the Schwarzschild solution (Eq.~\eqref{eq:schwarzschild}), which serves as the reference framework for the analysis developed in the remainder of this thesis \cite{einstein1916,wald1984}.

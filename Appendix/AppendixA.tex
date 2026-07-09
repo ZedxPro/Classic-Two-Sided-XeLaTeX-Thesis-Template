@@ -1,0 +1,66 @@
+
+	% ==========================
+	% Appendix A -- Numerical Validation
+	% ==========================
+	\cleardoublepage
+	\CustomAppendixIntro{A}{Numerical Validation}
+	
+	\setcounter{chapter}{1} % internal counters only (equations, figures...)
+	\setcounter{figure}{0}
+	\setcounter{table}{0}
+	\addcontentsline{toc}{chapter}{Appendix A -- Numerical Validation}
+	
+	\markboth{Numerical Validation}{}
+	\label{ann:A}
+	
+	\AppendixHeader
+	
+	\section*{Introduction}
+	
+	This appendix provides supplementary technical information on the numerical methods used in Chapters~\ref{ch:chap3} and~\ref{ch:chap4}. The geodesic integrator used for ray-tracing and the continued-fraction solver used for quasinormal modes are validated against known analytical and reference numerical results, in order to assess the accuracy and convergence of the codes employed throughout this work.
+	
+	\section*{Validation of the Geodesic Integrator}
+	
+	The fourth-order Runge--Kutta integrator described in Chapter~\ref{ch:chap3} is first tested in the weak-field regime, where the light deflection angle predicted by general relativity reduces to the classical result
+	\begin{equation}
+		\delta\phi \simeq \frac{2 r_s}{b}, \qquad b \gg r_s,
+		\label{eq:weak-deflection}
+	\end{equation}
+	where $r_s$ is the Schwarzschild radius of Eq.~\eqref{eq:rs} and $b$ the impact parameter \cite{einstein1916}. Table~\ref{tab:deflection-validation} compares the deflection angle obtained by numerical integration of Eq.~\eqref{eq:photon-radial} with the analytical estimate of Eq.~\eqref{eq:weak-deflection} for increasing values of $b/r_s$.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Comparison between the numerically integrated deflection angle and the weak-field analytical estimate of Eq.~\eqref{eq:weak-deflection}.}
+		\label{tab:deflection-validation}
+		\begin{tabular}{lccc}
+			\hline
+			\textbf{$b/r_s$} & \textbf{Analytical $\delta\phi$ (rad)} & \textbf{Numerical $\delta\phi$ (rad)} & \textbf{Relative error} \\
+			\hline
+			$10$ & $0.2000$ & $0.2007$ & $0.35\%$ \\
+			$50$ & $0.0400$ & $0.0401$ & $0.10\%$ \\
+			$100$ & $0.0200$ & $0.0200$ & $0.02\%$ \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+	As shown in Table~\ref{tab:deflection-validation}, the relative error decreases as $b/r_s$ increases, consistent with the fact that Eq.~\eqref{eq:weak-deflection} is itself a leading-order approximation of the exact deflection integral; the residual discrepancy at large $b/r_s$ is dominated by the neglected higher-order post-Newtonian terms rather than by numerical error \cite{misner1973}.
+	
+	The integrator is further validated in the strong-field regime by comparing the numerically determined critical impact parameter with the analytical value of Eq.~\eqref{eq:critical-impact}. The integration returns $b_c^{\text{num}} = 2.5978\,r_s$, to be compared with the analytical value $b_c = 3\sqrt{3}/2\,r_s \simeq 2.5981\,r_s$, corresponding to a relative deviation below $0.02\%$ and confirming the reliability of the shadow radii reported in Table~\ref{tab:shadow}.
+	
+	\section*{Validation of the Quasinormal Mode Solver}
+	
+	The quasinormal frequencies of Chapter~\ref{ch:chap4} are computed using Leaver's continued-fraction method \cite{leaver1985}, implemented as a root-finding procedure applied to the continued-fraction condition derived from Eq.~\eqref{eq:regge-wheeler}. Table~\ref{tab:qnm-validation} compares the fundamental $\ell=2$ Schwarzschild quasinormal frequency obtained by this implementation with the reference value reported in the literature.
+	
+	\begin{table}[H]
+		\centering
+		\caption{Comparison between the computed fundamental ($\ell=2,\,n=0$) Schwarzschild quasinormal frequency and the reference value of Leaver~\cite{leaver1985}, in units of $c^3/(GM)$.}
+		\label{tab:qnm-validation}
+		\begin{tabular}{lcc}
+			\hline
+			& \textbf{$\omega_R$} & \textbf{$\omega_I$} \\
+			\hline
+			Reference value \cite{leaver1985} & $0.3737$ & $0.0890$ \\
+			This work & $0.3736$ & $0.0891$ \\
+			\hline
+		\end{tabular}
+	\end{table}
