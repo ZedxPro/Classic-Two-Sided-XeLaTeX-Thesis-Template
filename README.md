@@ -1,42 +1,44 @@
-# 🏛️ Elegant Classic Thesis Template
+# 🏛️ The Sovereign Thesis Template
 
 <div align="center">
 
-![Template](https://img.shields.io/badge/TEMPLATE-THESIS-8E44AD?style=for-the-badge)
-![Engine](https://img.shields.io/badge/ENGINE-XELATEX-34495E?style=for-the-badge)
-![Layout](https://img.shields.io/badge/LAYOUT-TWO__SIDES-D35400?style=for-the-badge)
-![Style](https://img.shields.io/badge/STYLE-CLASSIC__ELEGANT-27AE60?style=for-the-badge)
+![Engine](https://img.shields.io/badge/Engine-XeLaTeX-8E44AD?style=for-the-badge&logo=latex&logoColor=white)
+![Layout](https://img.shields.io/badge/Layout-Two--Sides-D35400?style=for-the-badge)
+![Typography](https://img.shields.io/badge/Typography-Classic__Elegant-27AE60?style=for-the-badge)
+![Design](https://img.shields.io/badge/Design-Premium__Academic-2C3E50?style=for-the-badge)
 
 </div>
 
-Do you care in the slightest about what your readers think about your document, and by proxy about you and your competence level? If yes, then this classy, typographically professional layout and structured, clear, and revealing content can only help. This template tries to aid you in both of these endeavors.
+An academic masterpiece deserves more than just standard margins and generic layouts. **The Sovereign** is a premium, professionally engineered XeLaTeX template crafted specifically for rigorous academic research, dissertations, and high-end book printing. 
+
+Built on a timeless, symmetric **Two-Sides** layout, this template revives the golden ratio of classic book-binding while embracing modern typesetting power.
 
 ---
 
-## ✨ Template Features
+## 🎨 Design Philosophy & Features
 
-* 🔤 **Full XeLaTeX Support:** Native support for professional system fonts and complex typography.
-* 📖 **Classic Two-Sided Layout:** Balanced margins and symmetric grids tailored for elegant, high-quality printing.
-* 📌 **Clean Code Structure:** Well-organized files with plenty of comments to help you easily customize the template to your needs.
-* 📜 **Refined Page Numbering:** Page numbers and running headers perfectly positioned for an academic look.
+* **📜 The Golden Ratio Layout:** Perfectly calculated asymmetric margins on single pages that seamlessly align into a gorgeous, balanced spread when printed and bound (Two-Sides).
+* **🔤 Typographical Excellence via XeLaTeX:** Zero limitations on fonts. It is pre-configured to leverage advanced OpenType system fonts, ligatures, and pristine micro-typography.
+* **🖋️ Academic Sophistication:** From running headers that adapt dynamically to chapters, to meticulously spaced footnotes, every element is designed to minimize visual clutter and maximize readability.
+* **🧩 Modular Architecture:** No monolithic code. Your front matter, chapters, and bibliography are cleanly separated for an effortless writing experience.
 
 ---
 
-## 📦 Software Dependencies
+## 📦 System Requirements
 
 > [!WARNING]
-> To properly build the document, the template requires a modern **TeX Live** or **MiKTeX** distribution to avoid missing package errors.
+> Because this template heavily relies on native system font loading and advanced modern packages, compiling it with standard `pdfLaTeX` will fail. You **must** use the **XeLaTeX** engine.
 
-### LaTeX build tools:
-* `xelatex` - The core compiler used for handling modern fonts and layouts.
-* `latexmk` - Automated build tool to handle references, indexes, and glossaries seamlessly.
-* `biber` - Bibliography processing engine utilized by `biblatex`.
+### Recommended Toolchain:
+* **`xelatex`** — Core compiler for modern font mapping and rendering.
+* **`biber`** — Next-generation bibliography processor for flawless citation management via `biblatex`.
+* **`latexmk`** — Highly recommended to automate multiple compilation passes (Table of Contents, Cross-references, and Citations).
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start Guide
 
-To compile the document, ensure all dependencies are installed, then run the following command in the root directory:
+To compile your thesis with its full index, glossary, and bibliography layout, simply run this command in your terminal:
 
 ```bash
 latexmk -xelatex main.tex
