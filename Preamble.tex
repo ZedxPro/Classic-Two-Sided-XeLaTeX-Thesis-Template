@@ -40,6 +40,7 @@ skipbelow=6pt
 \usepackage{marginnote}
 \usepackage{mparhack}
 \usepackage{marginfix}
+\usepackage{ragged2e}
 
 % --- Graphics ---
 \usepackage{graphicx}
@@ -64,6 +65,7 @@ skipbelow=6pt
 \usepackage{makecell}
 \usepackage{array}
 \usepackage{wrapfig}
+
 % --- Figures ---
 \usepackage{subcaption}
 \usepackage{float}
@@ -74,7 +76,7 @@ skipbelow=6pt
 % --- Hyperlinks ---
 \usepackage[
 colorlinks=true,
-linkcolor=black!80,
+linkcolor=black,
 citecolor=black,
 urlcolor=blue,
 bookmarks=true,
@@ -112,18 +114,15 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 
 \titleformat{\section}
 {\normalfont\bfseries\fontsize{17}{20}\selectfont}
-{\thesection}{1em}{}
+{\thesection}{1em}{\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 
 \titleformat{\subsection}
 {\normalfont\bfseries\fontsize{14}{17}\selectfont}
-{\thesubsection}{1em}{}
+{\thesubsection}{1em}{\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 
 \titleformat{\subsubsection}
 {\normalfont\bfseries\fontsize{12}{15}\selectfont}
-{\thesubsubsection}{1em}{}
-
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
+{\thesubsubsection}{1em}{\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 
 % ==========================
 % TOC / LOT / LOF
@@ -230,6 +229,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 \newfontfamily\englishfont{TeX Gyre Pagella}
 \newfontfamily\frenchfont{TeX Gyre Pagella}
 \newfont{\chapterNumber}{pplr9d at 120pt}
+
 % ==========================
 % Geometry
 % ==========================
@@ -246,11 +246,6 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 % ==========================
 \definecolor{chapterred}{RGB}{139, 0, 0}
 \definecolor{HeaderRuleColor}{RGB}{0,0,0}
-\definecolor{dimorange}{RGB}{225,125,0}
-\definecolor{dimred}{RGB}{192,0,0}
-\definecolor{chapterblack}{RGB}{0,0,0}
-\definecolor{citebg}{RGB}{224,242,241}
-\definecolor{citeborder}{RGB}{79,195,247}
 
 % ==========================
 % TikZ Styles
@@ -368,6 +363,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		\end{scope}
 	\end{tikzpicture}%
 }
+
 % ==========================
 % Page Styles
 % ==========================
@@ -381,6 +377,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\renewcommand{\headrulewidth}{0pt}%
 	\renewcommand{\footrulewidth}{0pt}%
 	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
 }
 
 \fancypagestyle{summary}{%
@@ -388,7 +385,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\renewcommand*{\headrule}{}%
 	\renewcommand{\headrulewidth}{0pt}%
 	\renewcommand{\footrulewidth}{0pt}%
-	\fancyfoot[C]{\thepage}%
+	\fancyfoot[C]{\PageNumCentered{\thepage}}%
 }
 
 \fancypagestyle{noheader}{%
@@ -410,8 +407,8 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 \fancypagestyle{biblio}{%
 	\fancyhf{}%
 	\renewcommand*{\headrule}{\dynamicheaderrule}%
-	\fancyhead[RO]{\normalsize\textit{References}}%
-	\fancyhead[LE]{\normalsize\textit{References}}%
+	\fancyhead[RO]{\normalsize\textit{Bibliography}}%
+	\fancyhead[LE]{\normalsize\textit{Bibliography}}%
 	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
 	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
 }
@@ -422,6 +419,15 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\renewcommand{\headrulewidth}{0pt}%
 	\renewcommand{\footrulewidth}{0pt}%
 	\fancyfoot[C]{\PageNumCentered{\thepage}}%
+}
+
+\fancypagestyle{bibliofirst}{%
+	\fancyhf{}%
+	\renewcommand*{\headrule}{}%
+	\renewcommand{\headrulewidth}{0pt}%
+	\renewcommand{\footrulewidth}{0pt}%
+	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}%
+	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}%
 }
 
 % ==========================
@@ -440,6 +446,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		\end{scope}
 	\end{tikzpicture}%
 }
+
 % ==========================
 % Custom Section Header
 % ==========================
@@ -498,6 +505,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 
 	\vspace*{7cm}% 
 }
+
 % ==========================
 % Independent Chapter Quote (dynamic height, right-aligned)
 % ==========================
@@ -515,6 +523,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		(cqauthor) at ($(cqtext.south east)+(0,-0.15cm)$) {\textemdash\ #2};
 	\end{tikzpicture}%
 }
+
 % ==========================
 % SCRIPT Intro 
 % ==========================
@@ -530,6 +539,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		\fi
 	\end{tikzpicture}%
 }
+
 % ==========================
 % Custom Intro
 % ==========================
@@ -551,6 +561,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\fancyfoot[LO]{\PageNumWithRuleLeft{\thepage}}
 	\fancyfoot[RE]{\PageNumWithRuleRight{\thepage}}
 }
+
 % ==========================
 % Custom Appendix
 % ==========================
@@ -619,6 +630,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\end{tikzpicture}
 	\vspace*{7cm}
 }
+
 % ==========================
 % SCRIPT 
 % ==========================
@@ -638,6 +650,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\end{tikzpicture}%
 	\\[0.6cm]%
 }
+
 % ==========================
 % Dedication
 % ==========================
@@ -814,6 +827,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 	\marginpar[\raggedleft\small\itshape #1]{\small\itshape #1}
 }
 \makeatother
+
 % ==========================
 % Objective Box (respects margins)
 % ==========================
@@ -831,6 +845,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 }
 
 \raggedbottom
+
 % ==========================
 % TOC / LOF / LOT Numbers
 % ==========================
@@ -869,6 +884,7 @@ pdfauthor={BRAHIMI Mohammed Zin El Abibine, BOUCHETA Yassine}
 		\rule[0.6ex]{0.10\linewidth}{0.5pt}%
 	\end{center}
 }
+
 % ==========================
 % Line Spread
 % ==========================
