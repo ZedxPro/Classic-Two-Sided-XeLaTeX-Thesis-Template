@@ -7,6 +7,10 @@
 ![Typography](https://img.shields.io/badge/Typography-Classic__Elegant-27AE60?style=for-the-badge)
 ![Design](https://img.shields.io/badge/Design-Premium__Academic-2C3E50?style=for-the-badge)
 
+<br/><br/>
+
+![Thesis Template Preview](Thesis-Tamplate.jpg)
+
 </div>
 
 An academic masterpiece deserves more than just standard margins and generic layouts. **The Sovereign** is a premium, professionally engineered XeLaTeX template crafted specifically for rigorous academic research, dissertations, and high-end book printing. 
