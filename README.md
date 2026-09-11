@@ -9,7 +9,7 @@
 
 <br/><br/>
 
-![Thesis Template Preview](Thesis-Tamplate.jpg)
+![Thesis Template Preview](Thesis_Tamplate.jpg)
 
 </div>
 
